@@ -44,3 +44,5 @@
 .lb__links-wrapper a.youtube	{background-image: url("logos/youtube.jpg"); background-position: 0px 1px;}
 
 .lb__links-wrapper img			{border-radius: 50%; width: 90px; display: inline-block; height: 90px; margin: 1em;}
+
+#online-users{ margin-bottom: 10px;}
