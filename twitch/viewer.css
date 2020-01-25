@@ -1,3 +1,4 @@
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
 
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -10,6 +11,53 @@ button,hr,input{overflow:visible}progress,sub,sup{vertical-align:baseline}[type=
  * Copyright (c) 2020 David Buxarrais
  */
 
+html{font-family:Roboto,sans-serif;font-weight:400}*,:after,:before{box-sizing:border-box}body{margin:0 auto;font-size:12px}
+
+.hidden{display:none}
+.lb{position:relative;width:100%;min-height:100vh;overflow:auto;background-color:#fff}
+.lb::-webkit-scrollbar{position:relative;width:10px;z-index:10}
+.lb::-webkit-scrollbar-track{background-color:#e3e8eb}
+.lb::-webkit-scrollbar-thumb{border-radius:10px;border:2px solid #e3e8eb;border-right-width:1px;background-color:#fff}
+.lb__nav-top{position:fixed;z-index:2;display:-moz-flex;display:-ms-flex;display:-o-flex;display:flex;justify-content:center;align-items:center;width:100%}
+.lb__nav-top input{display:none}
+.lb__nav-top label{margin-right:10px;margin-left:10px;letter-spacing:1px}
+.lb__nav-top label:hover{cursor:pointer}
+.lb__nav-top{background: rgb(75, 54, 124);height:42px;text-transform:uppercase;transition:all .3s ease-in-out;z-index:3}
+.lb__nav-top label{font-weight:300;color:hsla(0,0%,100%,.8);text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.lb__nav-top label.loading{color:#91979a;font-weight:300;text-shadow:none;transition:all .3s ease-in-out}
+.lb__nav-top input[type=radio]:checked+label{font-weight:400;color:#fff}
+.lb__nav-top input[type=radio]:checked+label.loading{color:#09161d;font-weight:500}
+.lb__nav-top input[type=radio]:disabled+label{display:none}
+.lb__nav-top.isScrolled{height:30px}
+.lb__table{width:100%}
+.lb__table-wrapper{padding:65px 15px 35px;background-color:#fff}table{border-collapse:collapse}
+.lb__row{border-bottom:5px solid transparent}th{border:none;font-size:9px;font-weight:500;text-transform:uppercase;text-align:left;letter-spacing:.5px;color:#91979a;outline:none}
+.lb__th-mid{border-left:10px solid transparent}
+.lb__user-rank{font-size:10px;color:#91979a;font-weight:400}
+.lb__user-rank--star{animation:1s infinite thump}
+.lb__user-rank-wrapper{justify-content:center;width:16px;height:16px;margin-left:5px;border-radius:50%;background-color:#f8fafb}
+.lb__user-rank-wrapper,.lb__username{display:-moz-flex;display:-ms-flex;display:-o-flex;display:flex;align-items:center}
+.lb__username{border-left:5px solid transparent;font-size:13px;font-weight:500;color:#09161d}
+.lb__username a.day,.lb__username a.night{color:#fff;text-decoration:none;transition:all .1s ease-in-out}
+.lb__username a.day:hover,.lb__username a.night:hover{color:#a481ff;transition:all .1s ease-in-out}
+.lb__username a.day{color:#09161d}
+.lb__username a.day:hover{color:#7647ef}
+.lb__user-img-wrapper{display:inline-block;width:20px;height:20px;margin-right:7px}
+.lb__user-img{width:100%;border-radius:50%}
+.lb__see-all{width:90%;border-radius:3px;margin:4px auto 2px;text-align:center;background:rgb(75, 54, 124);transition:all .3s ease-in-out}
+.lb__see-all:hover{background:#7a46ff;transition:all .3s ease-in-out}
+.lb__see-all a{display:inline-block;width:100%;padding-top:5px;padding-bottom:5px;font-size:11px;font-weight:400;text-decoration:none;color:#fff}
+.lb.night{background-color:#09161d}
+.lb.night::-webkit-scrollbar-track{background-color:#070f13}
+.lb.night::-webkit-scrollbar-thumb{border-radius:10px;border-color:#070f13;background-color:#374750}
+.lb.night .lb__nav-bot{background-color:#09161d}
+.lb.night .lb__nav-bot:before{background:linear-gradient(transparent,#09161d)}
+.lb.night .lb__nav-bot label{font-weight:300;color:#bdc2c4}
+.lb.night .lb__nav-bot input[type=radio]:checked+label{border-bottom-color:#4f5e65;font-weight:400;color:#fff}
+.lb.night .lb__table-wrapper{background-color:#09161d}
+.lb.night .lb__user-rank-wrapper{background-color:#2b383f}
+.lb.night .lb__username{font-weight:400;color:#fff}
+.lb.night .lb__donation-amount{color:#bdc2c4}
 .lb__links-wrapper {display: none; background-color: #09161d; padding: 60px 15px 17px;}
 
 .lb__links
