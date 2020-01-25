@@ -118,9 +118,20 @@ $(document).ajaxStop(function () {
 	else{
 		tr = '<tr class="lb__row"><td class="lb__username">';
 		//tr += '<div class="lb__user-img-wrapper"><img src="' + liveStreamersCatalans[i][3] + '" class="lb__user-img"></div>';
-		tr += '<div><a href="https://go.twitch.tv/http://gaming.cat" target="_blank" class="night">' + 'No hi ha canals online' + '</a></div></td></tr>';
+		tr += '<div><a href="https://gaming.cat" target="_blank" class="night">' + 'No hi ha canals online' + '</a></div></td></tr>';
 		$('#online-users tbody').append( $(tr) );
 	}
+
+	$('#all-users .lb__row').each(function(index, el) {
+		if (index > 13 - liveStreamersCatalans.length)
+			$(el).hide();
+	});
+
+	$('.lb__see-all').on("click", function(e) {
+		e.preventDefault();
+		$('.lb__row').show();
+		$(e.currentTarget).hide();
+	});
 });
 
 function cleanString(string){
