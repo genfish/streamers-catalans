@@ -30,7 +30,7 @@ html{font-family:Roboto,sans-serif;font-weight:400}*,:after,:before{box-sizing:b
 .lb__nav-top input[type=radio]:disabled+label{display:none}
 .lb__nav-top.isScrolled{height:30px}
 .lb__table{width:100%}
-.lb__table-wrapper{padding:65px 15px 35px;background-color:#fff}table{border-collapse:collapse}
+.lb__table-wrapper{padding:60px 15px 17px;background-color:#fff}table{border-collapse:collapse}
 .lb__row{border-bottom:5px solid transparent}th{border:none;font-size:9px;font-weight:500;text-transform:uppercase;text-align:left;letter-spacing:.5px;color:#91979a;outline:none}
 .lb__th-mid{border-left:10px solid transparent}
 .lb__user-rank{font-size:10px;color:#91979a;font-weight:400}
