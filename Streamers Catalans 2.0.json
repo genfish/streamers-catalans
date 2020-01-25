@@ -1,0 +1,83 @@
+{
+  "allowHttpBackend": false,
+  "backendCommand": "",
+  "backendFolderName": "",
+  "certificateExceptions": [],
+  "extensionViews": [
+    {
+      "id": "1",
+      "label": "View",
+      "channelId": "30905585",
+      "configurationAnchor": "panel",
+      "displayChannelName": "devilquest",
+      "type": "panel",
+      "features": {
+        "isBitsEnabled": false,
+        "isChatEnabled": false,
+        "isSubscriptionStatusAvailable": false
+      },
+      "linked": false,
+      "linkedUserId": "",
+      "mode": "viewer",
+      "isPopout": false,
+      "role": "Broadcaster",
+      "orientation": "Portrait",
+      "frameSize": {
+        "width": 1280,
+        "height": 720
+      }
+    }
+  ],
+  "frontendCommand": "",
+  "frontendFolderName": "D:\\Documents\\Marti\\Programacio\\Twitch\\Streamers Catalans 2.0",
+  "manifest": {
+    "anchor": "panel",
+    "assetUrls": [],
+    "authorName": "Devilquest",
+    "bitsEnabled": false,
+    "canInstall": true,
+    "configUrl": "https://localhost:8080/config.html",
+    "configurationLocation": "none",
+    "description": "",
+    "eulaTosUrl": "",
+    "hasChatSupport": false,
+    "iconUrl": "",
+    "iconUrls": {},
+    "id": "f0160up6np8ntv0gp2vihrycv6aw1i",
+    "installationCount": -42,
+    "liveConfigUrl": "",
+    "name": "Streamers Catalans 2.0",
+    "panelHeight": 300,
+    "privacyPolicyUrl": "",
+    "requestIdentityLink": false,
+    "requiredBroadcasterAbilities": [],
+    "screenshotUrls": [],
+    "sku": "",
+    "state": "Testing",
+    "subscriptionsSupportLevel": "none",
+    "summary": "",
+    "supportEmail": "martiselldie@hotmail.com",
+    "vendorCode": "",
+    "version": "0.0.1",
+    "viewerSummary": "",
+    "viewerUrl": "https://localhost:8080/panel.html",
+    "viewerUrls": {
+      "panel": "https://localhost:8080/panel.html"
+    },
+    "views": {
+      "config": {
+        "canLinkExternalContent": false,
+        "viewerUrl": "https://localhost:8080/config.html"
+      },
+      "panel": {
+        "canLinkExternalContent": false,
+        "height": 300,
+        "viewerUrl": "https://localhost:8080/panel.html"
+      }
+    },
+    "whitelistedConfigUrls": [],
+    "whitelistedPanelUrls": []
+  },
+  "name": "Streamers Catalans 2.0",
+  "version": 1
+}
