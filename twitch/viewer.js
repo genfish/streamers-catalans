@@ -1,5 +1,6 @@
 var spreadsheetID = "1QSIxL_5UnlYyxylPpF3gMX1IJ6fFtx43q0SjQJPp9H8";
 var twitchApiClientID = 'g1hcj8fsx2yect2gmfet4mj61rjzw0';
+var secret = 'mry1dbe5rep7hpp2atr8zs126rbt1n';
 
 var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 
@@ -46,60 +47,77 @@ $(document).ready(function() {
 	});
 });
 
+
+
+
 function getStreamInfo(streamersNamesUrlArray){
-	for(var i=0; i < streamersNamesUrlArray.length; i++){
-		$.ajax({
-			type: "GET",
-			url: "https://api.twitch.tv/helix/users?" + streamersNamesUrlArray[i].toLowerCase(),
-			headers:{
-				'Client-ID': twitchApiClientID
-			},
-			success: function(receivedUserInfo){
-				var userIDsUrlString = "";
-				if(receivedUserInfo.data[0] != null){
-					for(var i=0; i < receivedUserInfo.data.length; i++){
-						streamersCatalans.push([
-							receivedUserInfo.data[i].id, //0 id
-							receivedUserInfo.data[i].login, //1 login
-							receivedUserInfo.data[i].display_name, //2 display_name
-							receivedUserInfo.data[i].profile_image_url //3 profile_image_url
-						]);
+	$.ajax({
+		type: "POST",
+		url: "https://id.twitch.tv/oauth2/token",
+		data: {'client_id': twitchApiClientID, 'client_secret': secret, 'grant_type' : 'client_credentials'},
+		success: function(appToken){
+			for(var i=0; i < streamersNamesUrlArray.length; i++){
+				$.ajax({
+					type: "GET",
+					url: "https://api.twitch.tv/helix/users?" + streamersNamesUrlArray[i].toLowerCase(),
+					headers:{
+						'Client-ID': twitchApiClientID,
+						'Authorization': 'Bearer ' + appToken['access_token']
+					},
+					error: function(retorn){
+					},
+					success: function(receivedUserInfo){
+						var userIDsUrlString = "";
+						if(receivedUserInfo.data[0] != null){
+							for(var i=0; i < receivedUserInfo.data.length; i++){
+								streamersCatalans.push([
+									receivedUserInfo.data[i].id, //0 id
+									receivedUserInfo.data[i].login, //1 login
+									receivedUserInfo.data[i].display_name, //2 display_name
+									receivedUserInfo.data[i].profile_image_url //3 profile_image_url
+								]);
 
-						userIDsUrlString += "user_id=" + receivedUserInfo.data[i].id;
-						if(i < receivedUserInfo.data.length - 1)
-							userIDsUrlString += "&";
-					}
+								userIDsUrlString += "user_id=" + receivedUserInfo.data[i].id;
+								if(i < receivedUserInfo.data.length - 1)
+									userIDsUrlString += "&";
+							}
 
-					$.ajax({
-						type: "GET",
-						url: "https://api.twitch.tv/helix/streams?" + userIDsUrlString,
-						headers:{
-							'Client-ID': twitchApiClientID
-						},
-						success: function(receivedStreamInfo){
-							if(receivedStreamInfo.data[0] != null){
-								var gamesIDsUrlString = "";
-								for(i=0; i < receivedStreamInfo.data.length; i++){
-									for(var j=0; j < streamersCatalans.length; j++){
-										if(receivedStreamInfo.data[i].user_id == streamersCatalans[j][0]){
-											liveStreamersCatalans.push([
-												streamersCatalans[j][0], //0 id
-												streamersCatalans[j][1], //1 login
-												streamersCatalans[j][2], //2 display_name
-												streamersCatalans[j][3], //3 profile_image_url
-												receivedStreamInfo.data[i].viewer_count, //4 viewer_count
-											]);
-											break;
+							$.ajax({
+								type: "GET",
+								url: "https://api.twitch.tv/helix/streams?" + userIDsUrlString,
+								headers:{
+									'Client-ID': twitchApiClientID,
+									'Authorization': 'Bearer ' + appToken['access_token']
+								},
+								error: function(returnval) {
+								},
+								success: function(receivedStreamInfo){
+									if(receivedStreamInfo.data[0] != null){
+										var gamesIDsUrlString = "";
+										for(i=0; i < receivedStreamInfo.data.length; i++){
+											for(var j=0; j < streamersCatalans.length; j++){
+												if(receivedStreamInfo.data[i].user_id == streamersCatalans[j][0]){
+													liveStreamersCatalans.push([
+														streamersCatalans[j][0], //0 id
+														streamersCatalans[j][1], //1 login
+														streamersCatalans[j][2], //2 display_name
+														streamersCatalans[j][3], //3 profile_image_url
+														receivedStreamInfo.data[i].viewer_count, //4 viewer_count
+													]);
+													break;
+												}
+											}
 										}
 									}
 								}
-							}
+							});
 						}
-					});
-				}
+					},
+
+				});
 			}
-		});
-	}
+		}
+	});
 }
 
 $(document).ajaxStop(function () {
